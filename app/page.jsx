@@ -27,7 +27,7 @@ const hiddenNotes = [
 ];
 
 export default function Page() {
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef(null);
   const [started, setStarted] = useState(false);
   const [revealed, setRevealed] = useState(false);
   const [mouse, setMouse] = useState({ x: 50, y: 50 });
@@ -57,7 +57,7 @@ export default function Page() {
     [mouse]
   );
 
-  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMove = (e) => {
     if (!containerRef.current || !started) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 100;
